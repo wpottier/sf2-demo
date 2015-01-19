@@ -1,0 +1,38 @@
+{% extends 'MopaBootstrapBundle::base_sass.html.twig' %}
+
+{% block title %}MCQ 2.6{% endblock %}
+
+{% block head_style %}
+    {{ parent() }}
+    <style>
+        body {
+            padding-top: 80px;
+        }
+    </style>
+{% endblock head_style %}
+
+{% block head_script %}
+    {% javascripts
+        'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'
+    %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock head_script %}
+
+{% block navbar %}
+    {% embed '@MopaBootstrap/Navbar/navbar.html.twig' with { fixedTop: true, staticTop: false, inverse: true } %}
+        {% block brand %}
+            <a class="navbar-brand" href="{{ path('mon_qcm_homepage') }}">MCQ 2.6</a>
+        {% endblock %}
+
+        {% block menu %}
+            {{ mopa_bootstrap_menu('main') }}
+            {{ mopa_bootstrap_menu('user') }}
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
+
+{% block page_header %}{% endblock %}
+
+{% block footer %}{% endblock %}
+

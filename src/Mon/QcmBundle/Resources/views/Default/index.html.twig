@@ -1,0 +1,14 @@
+{% extends 'MonQcmBundle::layout.html.twig' %}
+
+{% block page_title %}Accueil - {{ parent() }}{% endblock %}
+
+{% block test %}test{% endblock %}
+
+{% block content %}
+
+    <ul>
+    {% for participation in participations %}
+        <li>{{ participation.qcm.title }} ({{ participation.qcm.questions | length }} question(s)) - <a href="{{ path('mon_qcm_participation_view', {participationKey: participation.participationKey}) }}">Run test</a></li>
+    {% endfor %}
+    </ul>
+{% endblock %}

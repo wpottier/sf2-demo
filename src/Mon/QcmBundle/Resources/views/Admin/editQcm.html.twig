@@ -1,0 +1,12 @@
+{% extends 'MonQcmBundle::layout.html.twig' %}
+
+{% block content %}
+
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate'} }) }}
+        {{ form_widget(form) }}
+
+        <button type="submit">Save</button>
+
+    {{ form_end(form) }}
+
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'MonQcmBundle::layout.html.twig' %}
+
+{% block content %}
+
+  {{ form_start(form) }}
+    <h1>{{ question.sentence }}</h1>
+
+    {{ form_widget(form) }}
+
+    <button type="submit">Send</button>
+
+  {{ form_end(form) }}
+
+{% endblock %}

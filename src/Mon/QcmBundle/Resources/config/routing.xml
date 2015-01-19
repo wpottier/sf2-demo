@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<routes xmlns="http://symfony.com/schema/routing"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
+
+    <!--
+    <route id="mon_qcm_homepage2" path="/{name}">
+        <default key="_controller">MonQcmBundle:Default:index2</default>
+        <requirement key="name">.*</requirement>
+    </route>
+    -->
+
+    <route id="mon_qcm_homepage" path="/">
+        <default key="_controller">MonQcmBundle:Default:index</default>
+    </route>
+
+    <route id="mon_qcm_contact" path="/contact">
+        <default key="_controller">MonQcmBundle:Default:contact</default>
+    </route>
+
+    <route id="mon_qcm_security_login" path="/login">
+        <default key="_controller">MonQcmBundle:Security:login</default>
+    </route>
+
+    <route id="mon_qcm_security_check" path="/login_check" />
+    <route id="mon_qcm_security_logout" path="/logout" />
+
+    <route id="mon_qcm_admin_qcm" path="/admin/qcm">
+        <default key="_controller">MonQcmBundle:Admin:listQcm</default>
+    </route>
+
+    <route id="mon_qcm_admin_qcm_new" path="/admin/qcm/new">
+        <default key="_controller">MonQcmBundle:Admin:editQcm</default>
+    </route>
+
+    <route id="mon_qcm_admin_qcm_edit" path="/admin/qcm/{id}">
+        <default key="_controller">MonQcmBundle:Admin:editQcm</default>
+        <requirement key="id">\d+</requirement>
+    </route>
+
+    <route id="mon_qcm_participation_view" path="/{participationKey}/{question}">
+        <default key="_controller">MonQcmBundle:Participation:view</default>
+        <default key="question" />
+        <requirement key="participationKey">[a-z0-9]+</requirement>
+    </route>
+
+</routes>

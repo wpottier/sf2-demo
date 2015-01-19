@@ -1,0 +1,20 @@
+{% extends 'MonQcmBundle::layout.html.twig' %}
+
+ {% block page_header %}
+     <div class="page-header">
+         <h1>Contact us</h1>
+     </div>
+ {% endblock page_header %}
+
+{% block content %}
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+
+        <div class="form-group">
+            <div class="col-sm-offset-6 col-sm-12">
+                <button type="submit" class="btn btn-default">Send</button>
+            </div>
+        </div>
+
+    {{ form_end(form) }}
+{% endblock %}
