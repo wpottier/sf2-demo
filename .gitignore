@@ -19,5 +19,5 @@
 # Composer PHAR
 /composer.phar
 
-/web/js/*
-/web/css/*
+#/web/js/*
+#/web/css/*
