@@ -14,12 +14,13 @@
         </service>
 
         <service id="mon_qcm.menu.main" class="Knp\Menu\MenuItem" factory-service="mon_qcm.menu.builder" factory-method="mainMenu">
-            <argument type="service" id="security.context" />
+            <argument type="service" id="security.authorization_checker" />
             <tag name="knp_menu.menu" alias="main" />
         </service>
 
         <service id="mon_qcm.menu.user" class="Knp\Menu\MenuItem" factory-service="mon_qcm.menu.builder" factory-method="userMenu">
-            <argument type="service" id="security.context" />
+            <argument type="service" id="security.authorization_checker" />
+            <argument type="service" id="security.token_storage" />
             <tag name="knp_menu.menu" alias="user" />
         </service>
     </services>
