@@ -1,0 +1,18 @@
+<div id="{{ form.vars.id }}" class="collection-item">
+    <hr />
+    <div class="clearfix">
+        <a class="btn btn-default pull-right" data-collection-remove-btn=".mon_qcmbundle_qcm_questions_form_group">
+        remove_item
+        </a>
+    </div>
+
+    {{ form_row(form.sentence) }}
+    {{ form_row(form.explanation) }}
+
+
+    <table class="table table-bordered table-striped collection-items {{ form.propositions.vars.id }}_form_group" id="collection{{ form.propositions.vars.id }}_form_group">
+        {% for formProposition in form.propositions %}
+            {% include 'MonQcmBundle:Admin:_form_proposition.html.twig' with {'form': formProposition} only %}
+        {% endfor %}
+    </table>
+</div>

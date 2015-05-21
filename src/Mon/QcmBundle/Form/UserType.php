@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class QcmType extends AbstractType
+class UserType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,20 +15,9 @@ class QcmType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title')
-            ->add('description')
-            ->add('questions', 'collection', [
-                'type' => new QuestionType(),
-                'allow_add' => true,
-                'allow_delete' => true,
-                'prototype' => true,
-                'horizontal' => false,
-                'options' => array(
-                    'label_render' => false,
-                    'horizontal' => true,
-                    'horizontal_input_wrapper_class' => "col-lg-8",
-                )
-            ])
+            ->add('email')
+            ->add('name')
+            ->add('password')
         ;
     }
     
@@ -38,7 +27,7 @@ class QcmType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Mon\QcmBundle\Entity\Qcm'
+            'data_class' => 'Mon\QcmBundle\Entity\User'
         ));
     }
 
@@ -47,6 +36,6 @@ class QcmType extends AbstractType
      */
     public function getName()
     {
-        return 'mon_qcmbundle_qcm';
+        return 'mon_qcmbundle_user';
     }
 }

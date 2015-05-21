@@ -23,6 +23,10 @@
         <default key="_controller">MonQcmBundle:Security:login</default>
     </route>
 
+    <route id="mon_qcm_security_register" path="/register">
+        <default key="_controller">MonQcmBundle:Security:register</default>
+    </route>
+
     <route id="mon_qcm_security_check" path="/login_check" />
     <route id="mon_qcm_security_logout" path="/logout" />
 

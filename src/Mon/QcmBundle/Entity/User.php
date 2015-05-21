@@ -311,6 +311,7 @@ class User implements UserInterface
 
     public function __construct()
     {
+        $this->salt = base64_encode(mcrypt_create_iv(22, MCRYPT_DEV_URANDOM));
         $this->participations = new ArrayCollection();
         $this->createdAt = $this->updatedAt = new \DateTime();
     }

@@ -20,7 +20,14 @@ class QuestionType extends AbstractType
             ->add('propositions', 'collection', [
                 'type' => new AnswerPropositionType(),
                 'allow_add' => true,
-                'allow_delete' => true
+                'allow_delete' => true,
+                'prototype' => true,
+                'horizontal' => false,
+                'options' => array(
+                    'label_render' => false,
+                    'horizontal' => true,
+                    'horizontal_input_wrapper_class' => "col-lg-8",
+                )
             ])
         ;
     }

@@ -1,9 +1,22 @@
 {% extends 'MonQcmBundle::layout.html.twig' %}
+{% form_theme form _self %}
 
 {% block content %}
 
     {{ form_start(form, {'attr': {'novalidate': 'novalidate'} }) }}
-        {{ form_widget(form) }}
+        {{ form_row(form.title) }}
+        {{ form_row(form.description) }}
+
+        <h2>
+            Questions
+            <a class="btn btn-default pull-right" data-collection-add-btn=".mon_qcmbundle_qcm_questions_form_group">Nouvelle Question</a>
+        </h2>
+
+        <div id="collectionmon_qcmbundle_qcm_questions_form_group" class="{{ form.questions.vars.id }}_form_group collection-items" data-prototype="{% filter escape %}{% include 'MonQcmBundle:Admin:_form_question.html.twig' with {'form': form.questions.vars.prototype} only %}{% endfilter %}" data-prototype-name="__name__" data-prototype-label="__name__label__">
+            {% for formQuestion in form.questions %}
+                {% include 'MonQcmBundle:Admin:_form_question.html.twig' with {'form': formQuestion} only %}
+            {% endfor %}
+        </div>
 
         <button type="submit">Save</button>
 

@@ -14,4 +14,4 @@ parameters:
     compass_bin: /usr/bin/compass
 
     # A secret key that's used to generate certain security-related tokens
-    secret:            ThisTokenIsNotSoSecretChangeIt
+    secret:            6046370409RE5678909757838367890

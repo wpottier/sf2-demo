@@ -1,0 +1,22 @@
+{% extends 'MonQcmBundle::layout.html.twig' %}
+
+ {% block page_header %}
+     <div class="page-header">
+         <h1>{% block headline %}Register to access MCQs{% endblock headline %}</h1>
+     </div>
+ {% endblock page_header %}
+
+{% block content %}
+    <div class="col-md-9">
+        {{ form_start(form) }}
+            {{ form_widget(form) }}
+
+            <div class="form-group">
+                <div class="col-sm-offset-6 col-sm-12">
+                    <button type="submit" class="btn btn-default">Send</button>
+                </div>
+            </div>
+
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
