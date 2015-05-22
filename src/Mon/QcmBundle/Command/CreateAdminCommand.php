@@ -64,9 +64,9 @@ class CreateAdminCommand extends ContainerAwareCommand
     {
         $output->writeln('<bg=yellow;fg=black;options=bold>Création de l\'administrateur</bg=yellow;fg=black;options=bold>');
 
-        $email = $input->getArgument('email');
-        $password = $input->getArgument('password');
-        $name = $input->getArgument('name');
+        $email = $input->getOption('email');
+        $password = $input->getOption('password');
+        $name = $input->getOption('name');
 
         $user = new \Mon\QcmBundle\Entity\User();
 
