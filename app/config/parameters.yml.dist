@@ -15,3 +15,6 @@ parameters:
 
     # A secret key that's used to generate certain security-related tokens
     secret:            6046370409RE5678909757838367890
+
+    mailer_sender_name: 'Mon Projet'
+    mailer_sender_email: 'contact@mon-projet.fr'
