@@ -1,0 +1,12 @@
+{% if participation is defined %}
+<li>
+    {{ participation.qcm.title }}
+    ({{ participation.qcm.questions | length }} question(s))
+    -
+    {% block participation_link %}
+    <a href="{{ path('mon_qcm_participation_view', {participationKey: participation.participationKey}) }}">Run test</a>
+    {% endblock %}
+    -
+    {{ participation.createdAt | relativeDate(false, true) }}
+</li>
+{% endif %}

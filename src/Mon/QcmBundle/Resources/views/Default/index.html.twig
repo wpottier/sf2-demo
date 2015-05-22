@@ -2,13 +2,22 @@
 
 {% block page_title %}Accueil - {{ parent() }}{% endblock %}
 
-{% block test %}test{% endblock %}
-
 {% block content %}
 
+    {{ current.poney('Arc-en-ciels') }}
+
+    {{ render_esi(controller('MonQcmBundle:Default:participationList')) }}
+
     <ul>
-    {% for participation in participations %}
-        <li>{{ participation.qcm.title }} ({{ participation.qcm.questions | length }} question(s)) - <a href="{{ path('mon_qcm_participation_view', {participationKey: participation.participationKey}) }}">Run test</a></li>
+    {% for participation in participations if participation is poney %}
+        {% embed
+            'MonQcmBundle:Default:_participation_summary.html.twig'
+            with {'foo': 'bar', 'participation': participation} only
+        %}
+            {% block participation_link %}<a href="{{ path('mon_qcm_participation_view', {participationKey: participation.participationKey}) }}">Launch</a>{% endblock %}
+        {% endembed %}
+        {% else %}
+        Pas de participation
     {% endfor %}
     </ul>
 {% endblock %}

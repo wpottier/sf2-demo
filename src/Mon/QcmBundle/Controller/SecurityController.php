@@ -50,6 +50,7 @@ class SecurityController extends Controller
             $this->getDoctrine()->getManager()->persist($user);
             $this->getDoctrine()->getManager()->flush();
 
+            $this->get('mon_qcm.mailer.user')->sendWelcome($user);
             $this->get('session')->getFlashBag()->add('success', 'Merci de vôtre inscription');
 
             return $this->redirectToRoute('mon_qcm_homepage');

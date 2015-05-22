@@ -17,6 +17,13 @@ class DefaultController extends Controller
         return $this->render('MonQcmBundle:Default:index.html.twig', array('participations' => $participations));
     }
 
+    public function participationListAction()
+    {
+        $participations = $this->getDoctrine()->getRepository('MonQcmBundle:Participation')->findBy(['user' => $this->getUser()]);
+
+        return new Response(sprintf('%d participation(s)', count($participations)));
+    }
+
     public function contactAction(Request $request)
     {
         $form = $this->createFormBuilder()
