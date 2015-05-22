@@ -12,7 +12,7 @@ class SecurityController extends Controller
 {
     public function loginAction(Request $request)
     {
-        if ($this->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY')) {
+        if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
             return $this->redirect($this->generateUrl('mon_qcm_homepage'));
         }
 
@@ -33,7 +33,7 @@ class SecurityController extends Controller
 
     public function registerAction(Request $request)
     {
-        if ($this->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY') | $this->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERME')) {
+        if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY') | $this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_REMEMBERME')) {
             return $this->redirect($this->generateUrl('mon_qcm_homepage'));
         }
 

@@ -3,7 +3,8 @@
 namespace Mon\QcmBundle\Menu;
 
 use Knp\Menu\FactoryInterface;
-use Symfony\Component\Security\Core\SecurityContextInterface;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
+use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
 class Builder
 {
@@ -18,14 +19,14 @@ class Builder
     }
 
 
-    public function mainMenu(SecurityContextInterface $securityContext)
+    public function mainMenu(AuthorizationCheckerInterface $authorizationCheckerInterface)
     {
         // Menu will be a navbar menu anchored to right
         $menu = $this->factory->createItem('root', array(
             'navbar' => true
         ));
 
-        if (!$securityContext->isGranted('ROLE_USER')) {
+        if (!$authorizationCheckerInterface->isGranted('ROLE_USER')) {
 
             $menu->addChild('Contact', array('route' => 'mon_qcm_contact'));
 
@@ -35,14 +36,14 @@ class Builder
         $menu->addChild('Home', array('route' => 'mon_qcm_homepage'));
         $menu->addChild('Contact', array('route' => 'mon_qcm_contact'));
 
-        if ($securityContext->isGranted('ROLE_ADMIN')) {
+        if ($authorizationCheckerInterface->isGranted('ROLE_ADMIN')) {
             $menu->addChild('Admin', array('route' => 'mon_qcm_admin_qcm'));
         }
 
         return $menu;
     }
 
-    public function userMenu(SecurityContextInterface $securityContext)
+    public function userMenu(AuthorizationCheckerInterface $authorizationCheckerInterface, TokenStorage $tokenStorage)
     {
         // Menu will be a navbar menu anchored to right
         $menu = $this->factory->createItem('root', array(
@@ -50,12 +51,12 @@ class Builder
             'pull-right' => true
         ));
 
-        if (!$securityContext->isGranted('ROLE_USER')) {
+        if (!$authorizationCheckerInterface->isGranted('ROLE_USER')) {
             return $menu;
         }
 
         // Create a dropdown with a caret
-        $dropdown = $menu->addChild($securityContext->getToken()->getUser()->getName(), array(
+        $dropdown = $menu->addChild($tokenStorage->getToken()->getUser()->getName(), array(
             'dropdown' => true,
             'caret' => true,
         ));
