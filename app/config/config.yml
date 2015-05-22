@@ -32,6 +32,9 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    form:
+        resources:
+            - 'MonQcmBundle:Forms:theme.html.twig'
 
 # Assetic Configuration
 assetic:
